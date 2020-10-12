@@ -135,12 +135,16 @@ void loop()
     //DataPacketHeader[2] = (uint8_t)(data_len);   // data length
     //DataPacketHeader[3] = (uint8_t)(data_len >> 8);
     // DataPacketHeader[4] = CES_CMDIF_TYPE_DATA; // packet type: 0x02 -data 0x01 -commmand
-
+/*
     DataPacketHeader[2] = s32DaqVals[1]; // 4 bytes ECG data
     DataPacketHeader[3] = s32DaqVals[1] >> 8;
     DataPacketHeader[4] = s32DaqVals[1] >> 16;
     DataPacketHeader[5] = s32DaqVals[1] >> 24;
-
+*/
+    DataPacketHeader[2] = ecg_filterout[0];
+    DataPacketHeader[3] = ecg_filterout[0]>> 8;
+    DataPacketHeader[4] = 0;
+    DataPacketHeader[5] = 0;
     // DataPacketHeader[9] = s32DaqVals[0]; // 4 bytes Respiration data
     // DataPacketHeader[10] = s32DaqVals[0] >> 8;
     // DataPacketHeader[11] = s32DaqVals[0] >> 16;
